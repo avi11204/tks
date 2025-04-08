@@ -1,0 +1,291 @@
+<!-- <div class="container-fluid">
+
+  <div class="nav11">
+    <div class="logo">TKS</div>
+    <div class="admin"><span class="nico"><i class="ri-admin-line"></i></span>ADMIN</div>
+    <div routerLink="/quicknav" class="nav1"><span class="nico"><i class="ri-dashboard-line"></i></span>Dashboard</div>
+    <div routerLink="/orders" class="nav2"><span class="nico"><i class="ri-store-line"></i></span>Orders</div>
+    <div routerLink="/driver" class="nav3"><span class="nico"><i class="ri-steering-fill"></i></span>Driver</div>
+    <div class="nav4" routerLink="/vehicle" ><span class="nico"><i class="ri-truck-line"></i></span>Vehicles</div>
+    <div routerLink="/budget" class="nav6"><span class="nico"><i class="ri-funds-line"></i></span>Budget</div>
+    <div routerLink="/misc" class="nav6"><span class="nico"><i class="ri-link-m"></i></span>Misc</div>
+    <div class="nav6" (click)="logout()"><span class="nico"><i class="ri-funds-line"></i></span>Signout</div>
+  </div>
+  
+  <div class="main-content">
+    <div>
+      <h4 style="color:gold">Dashboard</h4>
+      <span style="color:gray">Home > Dashboard</span>
+    </div>
+
+    <div class="order-summary">
+      <h3>Earning</h3>
+      <div class="widget">
+        <div class="products">
+          <h5>Products</h5>
+          <b>Cement</b>
+          <div class="progress">
+            <span class="level" id="cl"></span>
+            <span class="per">{{ci}}%</span></div>
+          <b>Gravels</b>
+          <div class="progress">
+            <span class="level" id="gl"></span>
+            <span class="per">{{gi}}%</span></div>
+          <b>Sand</b>
+          <div class="progress">
+            <span class="level" id="sl"></span>
+            <span class="per">{{si}}%</span></div>
+          <b>Water</b>
+          <div class="progress">
+            <span class="level" id="wl"></span>
+            <span class="per">{{wi}}%</span></div>
+        </div>
+        <canvas id="line-chart-container"></canvas>
+      </div>
+    </div>
+
+    <div class="order-summary1">
+      <h3>Order Summary</h3>
+      <canvas id="chart-container"></canvas>
+    </div>
+
+    <div class="order-tab">
+      <div id="s1" class="oic"><i class="ri-shopping-cart-line"></i></div>
+      <div class="ode">
+        <div *ngIf="dataload==true else to">
+          <h5><i class="fa fa-circle-o-notch fa-spin"></i></h5>
+        </div>
+        <ng-template #to>
+          <h3>{{totalor}}</h3>
+        </ng-template>
+        <h5>Total orders</h5>
+      </div>
+    </div>
+
+    <div class="order-tab">
+      <div id="s2" class="oic"><i class="ri-shopping-bag-2-line"></i></div>
+      <div class="ode">
+        <div *ngIf="dataload==true else nb">
+          <h5><i class="fa fa-circle-o-notch fa-spin"></i></h5>
+        </div>
+        <ng-template #nb>
+          <h3>{{processing}}</h3>
+        </ng-template>
+        <h5>New bookings</h5>
+      </div>
+    </div>
+
+    <div class="order-tab">
+      <div id="s3" class="oic"><i class="ri-truck-line"></i></div>
+      <div class="ode">
+        <div *ngIf="dataload==true else nv">
+          <h5><i class="fa fa-circle-o-notch fa-spin"></i></h5>
+        </div>
+        <ng-template #nv>
+          <h3>6</h3>
+        </ng-template>
+        <h5>Vehicles</h5>
+      </div>
+    </div>
+
+    <div class="order-tab">
+      <div id="s4" class="oic"><i class="ri-steering-2-line"></i></div>
+      <div class="ode">
+        <div *ngIf="dataload==true else nd">
+          <h5><i class="fa fa-circle-o-notch fa-spin"></i></h5>
+        </div>
+        <ng-template #nd>
+          <h3>6</h3>
+        </ng-template>
+        <h5>Drivers</h5>
+      </div>
+    </div>
+    
+    <div class="regular">
+      <div class="r-c"><h3>Regular Customers </h3><div class="spin" *ngIf="regload==true"><i class="fa fa-circle-o-notch fa-spin"></i></div></div>
+      <div class="customer-details">
+        <div *ngFor="let i of custreg" class="customer">
+          <div class="name"><b><i class="ri-user-star-line"></i> {{i.name}}</b></div>
+          <div class="mobile">{{i.phone}}</div>
+          <div class="remove" title="Reomove from regular customer" (click)="removereg(i.phone)"><b><i class="ri-close-line"></i></b></div> 
+        </div>
+      </div>
+    </div>
+
+    <div class="regular1">
+      <div class="r-c"><h3>Products </h3><div class="spin" *ngIf="proload==true"><i class="fa fa-circle-o-notch fa-spin"></i></div></div>
+      <div class="customer-details">
+        <div class="customer">
+          <div class="name"><b>1.   {{products[0].item}}</b></div>
+          <div class="price" (click)="chpr('cp')">Rs {{products[0].price}}</div><input class="hidden inp" type="text"  id="cp" (keydown)="uppr($event,'cp')">
+          <div title="Change the availability of the product">
+            <b>
+              <i *ngIf="products[0].avail=='available'" id={{products[0].item}} class="avail ri-radio-button-fill" (click)="avail(products[0].item)"></i>
+              <i *ngIf="products[0].avail=='unavailable'" id={{products[0].item}} class="noavail ri-radio-button-fill" (click)="avail(products[0].item)"></i>
+            </b>
+          </div> 
+        </div>
+        <div class="customer">
+          <div class="name"><b>2.   {{products[1].item}}</b></div>
+          <div class="price" (click)="chpr('gp')">Rs {{products[1].price}}</div><input class="hidden inp" type="text"  id="gp" (keydown)="uppr($event,'gp')">
+          <div title="Change the availability of the product">
+            <b>
+              <i *ngIf="products[1].avail=='available'" id={{products[1].item}} class="avail ri-radio-button-fill" (click)="avail(products[1].item)"></i>
+              <i *ngIf="products[1].avail=='unavailable'" id={{products[1].item}} class="noavail ri-radio-button-fill" (click)="avail(products[1].item)"></i>
+            </b>
+          </div> 
+        </div>
+        <div class="customer">
+          <div class="name"><b>3.   {{products[2].item}}</b></div>
+          <div class="price" (click)="chpr('sp')">Rs {{products[2].price}}</div><input class="hidden inp" type="text"  id="sp" (keydown)="uppr($event,'sp')">
+          <div title="Change the availability of the product">
+            <b>
+              <i *ngIf="products[2].avail=='available'" id={{products[2].item}} class="avail ri-radio-button-fill" (click)="avail(products[2].item)"></i>
+              <i *ngIf="products[2].avail=='unavailable'" id={{products[2].item}} class="noavail ri-radio-button-fill" (click)="avail(products[2].item)"></i>
+            </b>
+          </div> 
+        </div>
+        <div class="customer">
+          <div class="name"><b>4.   {{products[3].item}}</b></div>
+          <div class="price" (click)="chpr('wp')">Rs {{products[3].price}}</div><input class="hidden inp" type="text"  id="wp" (keydown)="uppr($event,'wp')">
+          <div title="Change the availability of the product">
+            <b>
+              <i *ngIf="products[3].avail=='available'" id={{products[3].item}} class="avail ri-radio-button-fill" (click)="avail(products[3].item)"></i>
+              <i *ngIf="products[3].avail=='unavailable'" id={{products[3].item}} class="noavail ri-radio-button-fill" (click)="avail(products[3].item)"></i>
+            </b>
+          </div> 
+        </div>
+      </div>
+    </div>
+
+    <div class="tasks">
+      <div class="card text-center">
+
+        <ul style="margin-top: 10px;" class="nav nav-tabs" id="nav-tabs" role="tablist">
+          <i style="font-size: 24px;padding-left:5px;padding-right:5px" class="ri-file-list-line"></i>
+          <li class="nav-item">
+            <a class="nav-link active" id="task-tab" data-toggle="tab" href="#nav-tasks" role="tab" aria-controls="nav-tasks" aria-selected="true">Tasks<span class="badge">{{count}}</span></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" id="done-tab" data-toggle="tab" href="#nav-done" role="tab" aria-controls="nav-home" aria-selected="true">Completed</a>
+          </li>
+          <ul class="nav nav-item">
+            <li class="nav-item">
+              <button style="margin-left: 5px;margin-top:5px" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#taskadd">+ Add New Task</button>
+            </li>
+          </ul>
+        </ul>
+        
+        
+        <div class="card-body tab-content" id="nav-content">
+          <div class="tab-pane fade show active" id="nav-tasks" role="tabpanel" aria-labelledby="nav-tasks">
+            <div class="taskdet">
+              <table>
+                <tbody>
+                  <tr *ngFor="let i of pending">
+                    <td class="taskn"><i style="font-size: 24px;" [ngStyle]="{'color':i.label}" class="ri-checkbox-blank-circle-fill"></i>{{i.task}}</td>
+                    <td class="desc">{{i.desc}}</td>
+                    <td class="dt">{{i.dt}}</td>
+                    <td class="taic"><i style="color:limegreen;margin-top: 10px;font-size: 24px;cursor:pointer" class="ri-check-line" (click)="donetask(i.id)"></i></td>
+                    <td class="taic"><i style="color:tomato;margin-top: 10px;font-size: 24px;cursor:pointer" class="ri-delete-bin-2-line" (click)="deletetask(i.id)"></i></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <div class="tab-pane fade show" id="nav-done" role="tabpanel" aria-labelledby="nav-done">
+            <div class="customer-details">
+              <div class="taskdet">
+                <table>
+                  <tbody>
+                    <tr *ngFor="let i of completed">
+                      <td class="taskn"><i style="font-size: 24px;" [ngStyle]="{'color':i.label}" class="ri-checkbox-blank-circle-fill"></i>{{i.task}}</td>
+                      <td class="descc">{{i.desc}} iseydnbciusdh</td>
+                      <td class="dt">{{i.dt}}</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+    
+    <div class="modal fade" id="taskadd" tabindex="-1" role="dialog" aria-labelledby="taskadd" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-scrollable" role="document">
+          <div class="modal-content">
+              <div class="modal-header">
+                  <h5 class="modal-title">Add Task</h5>
+              </div>
+
+              <div class="modal-body">
+                
+                  <div class="form-group">
+                      <label for="tn">Task Name</label>
+                      <input type="text" class="form-control" id="tn" placeholder="Task Name">
+                  </div>
+
+                  <div class="form-group">
+                      <label for="desc">Description</label>
+                      <textarea class="form-control" cols="10" rows="3" id="desc"></textarea>
+                  </div>
+
+                  <div class="form-group">
+                    <label for="lb">Task Label</label>
+                    <select class=" custom-select" id="lb">
+                      <option class="red" value="tomato" selected>&#xf0c8; Call</option>
+                      <option class="blue" value="dodgerblue">&#xf0c8; Orders</option>
+                      <option class="green" value="limegreen">&#xf0c8; Payment</option>
+                      <option class="yellow" value="gold">&#xf0c8; Customer</option>
+                      <option class="orange" value="orange">&#xf0c8; Vehicle</option>
+                      <option value="black">&#xf0c8; Others</option>
+                    </select>
+                  </div>
+                          
+                  <div class="form-group">
+                      <label for="dt">Time</label>
+                      <input type="datetime-local" class="form-control" id="dt">
+                  </div>
+                
+              </div>
+              
+              <div class="modal-footer">
+                  <button type="button" class="btn btn-outline-danger" data-dismiss="modal">Cancel</button>
+                  <button id="tadd" type="button" class="btn btn-success" (click)="addtask()">Save</button>
+              </div>
+          
+          </div>
+      </div>
+    </div>
+
+</div> -->
+
+<div class="quicknav">
+  <h2>Quick Navigation</h2>
+
+  <button (click)="customers()">Customers</button>
+  <button (click)="pricesummary()">Price Summary</button>
+  <button (click)="ordersummary()">Order Summary</button>
+  <button (click)="prods()">Products</button>
+
+  <input id="priceInput" type="text" (keyup)="uppr($event, 'priceInput')" placeholder="Enter price" />
+  <button (click)="chpr('priceInput')">Check Price</button>
+
+  <hr />
+
+  <h3>Tasks</h3>
+  <input id="taskInput" type="text" placeholder="New task" />
+  <button (click)="addtask()">Add Task</button>
+
+  <ul>
+    <li *ngFor="let task of tasksList; let i = index">
+      {{ task }}
+      <button (click)="donetask(i)">Done</button>
+      <button (click)="deletetask(i)">Delete</button>
+    </li>
+  </ul>
+
+  <button (click)="logout()">Logout</button>
+</div>

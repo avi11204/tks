@@ -1,0 +1,46 @@
+<app-navbar></app-navbar>
+<div class="text-center">
+  <h1 class="pt-5 pb-3">Trip Sheet</h1>
+  <div class="container col-md-4 formcont">
+    <form #postForm="ngForm" (ngSubmit)="onSubmit(postForm.value);postForm.reset()">
+      <div class="form-group">
+        <input 
+          type="text" 
+          class="form-control" 
+          id="startkm" 
+          placeholder="Enter Start KM" 
+          ngModel
+          name="startKm"
+        >
+      </div>
+      <div class="form-group">
+        <input 
+          type="text" 
+          class="form-control" 
+          id="endkm" 
+          placeholder="Enter End KM"
+          ngModel 
+          name="endKm"
+        >
+      </div>
+      <div class="form-group">
+        <textarea 
+          class="form-control" 
+          id="review" 
+          rows="3"
+          ngModel
+          name="review"
+        >
+          Enter the Review
+        </textarea>
+      </div>
+      <div class="pt-3">
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </div>
+    </form>
+  </div>
+  <h2>Data</h2>
+  <ul *ngFor="let trip of tripData">
+    <li>{{trip.id}}</li>
+  </ul>
+</div>

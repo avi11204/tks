@@ -1,0 +1,31 @@
+h5 {
+  display: flex;
+  text-align: center;
+}
+
+.card {
+  width: 380px;
+  height: 230px;
+  border-radius: 15px;
+}
+
+.algnver {
+  display: flex;
+  align-items: center;
+  /* height: 500px; */
+  /*Center Horizontal*/
+  justify-content: center;
+  /*Center Vertical*/
+  min-height: 85vh;
+}
+
+p {
+  font-size: 19px;
+}
+
+@media only screen and (max-width: 600px) {
+  .card {
+    
+  }
+
+}

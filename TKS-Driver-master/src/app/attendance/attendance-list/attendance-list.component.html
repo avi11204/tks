@@ -1,0 +1,24 @@
+<div class="parent">
+  <div class="child table-responsive">
+    <table class="table text-center table-striped table-hover">
+      <thead class="thead-dark">
+        <tr>
+          <th scope="col" style="text-align:left;"><span>Date</span></th>
+          <th scope="col">Status</th>
+          <th scope="col">Check In</th>
+          <th scope="col">Check Out</th>
+          <th scope="col">Duration</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let attendanceDt of attendance">
+          <th scope="row" style="text-align:left;">{{attendanceDt.date}}</th>
+          <td>{{attendanceDt.status}}</td>
+          <td>{{attendanceDt.checkin}}</td>
+          <td>{{attendanceDt.checkout}}</td>
+          <td>{{attendanceDt.duration}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

@@ -1,0 +1,42 @@
+<div class="container-flush">
+    <div id="container" class="col-md-4 col-sm-8">
+        <form class="form" id="my-form">
+            <div class="container">
+                <div class="text-center heading ">
+                    <h1 style="font-weight:500">Driver Login</h1>
+                </div>
+                <div class="form-group pt-5">
+                <input 
+                    type="text" 
+                    class="form-control" 
+                    id="username" 
+                    placeholder="Username"
+                    [(ngModel)]="Username"
+                    [ngModelOptions]="{standalone: true}"
+                    (ngModelChange)='onChange1($event)'
+                >
+                <!-- <p>{{Username}}</p> -->
+                <!-- <p class="err-msg">Enter your Username</p> -->
+                <p *ngIf="status1" class="err-msg">{{msg1}}</p>
+                </div>
+                <div class="form-group pt-2">
+                <input 
+                    type="password" 
+                    class="form-control" 
+                    id="userpassword" 
+                    placeholder="Password"
+                    [(ngModel)]="Password"
+                    [ngModelOptions]="{standalone: true}"
+                    (ngModelChange)='onChange2($event)'
+                >
+                <p *ngIf="status2" class="err-msg">{{msg2}}</p>
+                </div>
+        
+                <div class="text-center pt-4">
+                    <button type="submit" class="btn btn-primary" (click)="onSubmit()">Submit</button>
+                    <p class="forgot-pass pt-2">Forgot Username / Password?</p>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

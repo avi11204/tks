@@ -1,0 +1,25 @@
+<div class="pt-1">
+  <a 
+    class="card"
+    style="text-decoration: none;color:black;"
+    (click) = "onSelected()"
+  >
+    <div class="card-body row" >
+      <div class="col-sm-2">
+        {{task.orderId}}
+      </div>
+      <div class="col-sm-2">
+        {{task.name}}
+      </div>
+      <div class="col-sm-2">
+        {{task.material}}
+      </div>
+      <div class="col-sm-2">
+        {{task.quant}}
+      </div>
+      <div class="col-sm-4 taskplace">
+        {{task.place}}
+      </div>
+    </div>
+  </a>
+</div>

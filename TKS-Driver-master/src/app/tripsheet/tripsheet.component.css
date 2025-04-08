@@ -1,0 +1,7 @@
+.formcont {
+  /* border: 1px solid green; */
+  padding: 30px 30px 30px 30px;
+  border-radius:12px;
+  background-color: whitesmoke;
+  box-shadow: 7px 7px 5px grey;
+}

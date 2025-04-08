@@ -1,0 +1,100 @@
+Folder PATH listing for volume New Volume
+Volume serial number is 1EEE-1B8B
+D:\FINAL_TKS\ADMIN-MASTER\SRC
+¦   favicon.ico
+¦   index.html
+¦   main.ts
+¦   polyfills.ts
+¦   styles.css
+¦   test.ts
+¦   
++---app
+¦   ¦   app-routing.module.ts
+¦   ¦   app.component.css
+¦   ¦   app.component.html
+¦   ¦   app.component.spec.ts
+¦   ¦   app.component.ts
+¦   ¦   app.module.ts
+¦   ¦   
+¦   +---admin-auth
+¦   ¦       admin-auth.component.css
+¦   ¦       admin-auth.component.html
+¦   ¦       admin-auth.component.spec.ts
+¦   ¦       admin-auth.component.ts
+¦   ¦       auth.jpg
+¦   ¦       index.ts
+¦   ¦       
+¦   +---budget
+¦   ¦       budget.component.css
+¦   ¦       budget.component.html
+¦   ¦       budget.component.spec.ts
+¦   ¦       budget.component.ts
+¦   ¦       
+¦   +---driver
+¦   ¦       driver.component.css
+¦   ¦       driver.component.html
+¦   ¦       driver.component.spec.ts
+¦   ¦       driver.component.ts
+¦   ¦       
+¦   +---error
+¦   ¦       error.component.css
+¦   ¦       error.component.html
+¦   ¦       error.component.spec.ts
+¦   ¦       error.component.ts
+¦   ¦       index.ts
+¦   ¦       
+¦   +---guards
+¦   ¦       auth.guard.spec.ts
+¦   ¦       auth.guard.ts
+¦   ¦       
+¦   +---interfaces
+¦   ¦       completed.ts
+¦   ¦       customers.ts
+¦   ¦       driverdata.ts
+¦   ¦       feed.ts
+¦   ¦       misc_cust.ts
+¦   ¦       orderslist.ts
+¦   ¦       pending.ts
+¦   ¦       products.ts
+¦   ¦       
+¦   +---misc
+¦   ¦       misc.component.css
+¦   ¦       misc.component.html
+¦   ¦       misc.component.spec.ts
+¦   ¦       misc.component.ts
+¦   ¦       
+¦   +---orders
+¦   ¦       index.ts
+¦   ¦       orders.component.css
+¦   ¦       orders.component.html
+¦   ¦       orders.component.spec.ts
+¦   ¦       orders.component.ts
+¦   ¦       
+¦   +---quicknav
+¦   ¦       index.ts
+¦   ¦       quicknav.component.css
+¦   ¦       quicknav.component.html
+¦   ¦       quicknav.component.spec.ts
+¦   ¦       quicknav.component.ts
+¦   ¦       
+¦   +---services
+¦   ¦       auth.service.spec.ts
+¦   ¦       auth.service.ts
+¦   ¦       
+¦   +---vehicles
+¦           vehicles.component.css
+¦           vehicles.component.html
+¦           vehicles.component.spec.ts
+¦           vehicles.component.ts
+¦           
++---assets
+¦       .gitkeep
+¦       empty.png
+¦       error.gif
+¦       lorry.jpg
+¦       sq_load.gif
+¦       
++---environments
+        environment.prod.ts
+        environment.ts
+        

@@ -1,0 +1,12 @@
+specVersion: "v1"
+serviceId: "admin-master"
+location: "us-central1"
+schema:
+  source: "./schema"
+  datasource:
+    postgresql:
+      database: "fdcdb"
+      cloudSql:
+        instanceId: "admin-master-fdc"
+      # schemaValidation: "COMPATIBLE"
+connectorDirs: ["./connector"]

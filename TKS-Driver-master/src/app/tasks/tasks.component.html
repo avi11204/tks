@@ -1,0 +1,25 @@
+<app-navbar></app-navbar>
+<div class="parent">
+  <div class="child1">
+    <!-- <h1>Task List</h1> -->
+    <app-task-list></app-task-list>
+  </div>
+  <div class="child2">
+    <!-- <h1>Task Detail</h1> -->
+    <app-task-detail
+    *ngIf = "selectedTask else sub"
+    [task]="selectedTask"
+    ></app-task-detail>
+    <ng-template #sub>
+      <div class="justify-content-center algnver">
+        <div class="card text-center">
+          <div class="card-body">
+            <div class="justify-content-center pt-4" >
+              <p>Please select any Tasks!</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </ng-template>
+  </div>
+</div>
